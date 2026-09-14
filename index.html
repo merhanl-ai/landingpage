@@ -23,6 +23,7 @@
   body{background:var(--cream); color:var(--ink); font-family:'Tajawal', sans-serif; line-height:1.7; overflow-x:hidden;}
   h1,h2,h3{font-family:'Markazi Text', serif; font-weight:700; color:var(--berry);}
   .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
 
   /* NAV — logo mark + wordmark, per guideline min clear space */
   nav{display:flex; align-items:center; justify-content:space-between; padding:24px 24px; max-width:920px; margin:0 auto;}
@@ -80,8 +81,8 @@
   section.compare h2{font-size:clamp(28px,4vw,36px); margin-bottom:14px;}
   section.compare .sub{font-size:16px; color:var(--ink-soft); margin-bottom:40px; max-width:52ch; margin-left:auto; margin-right:auto;}
   .compare-box{position:relative; aspect-ratio:4/3; border-radius:2px; overflow:hidden; user-select:none; direction:ltr;}
-  .compare-box .after-layer{position:absolute; inset:0; background:linear-gradient(160deg, var(--blush), var(--berry)); display:flex; align-items:flex-end; padding:18px;}
-  .compare-box .before-layer{position:absolute; inset:0; background:var(--beige); display:flex; align-items:flex-end; padding:18px; overflow:hidden;}
+  .compare-box .after-layer, .compare-box .before-layer{position:absolute; inset:0; display:flex; align-items:flex-end; padding:18px;}
+  .compare-box .after-layer img, .compare-box .before-layer img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1;}
   .compare-box .layer-tag{color:var(--cream); font-size:13px; font-family:'Tajawal'; background:rgba(58,22,38,0.55); padding:4px 12px; border-radius:2px;}
   .compare-box .before-layer .layer-tag{color:var(--ink); background:rgba(250,245,238,0.75);}
   .compare-handle{position:absolute; top:0; bottom:0; width:2px; background:var(--cream); cursor:ew-resize;}
@@ -120,6 +121,37 @@
   .voice p.quote{font-size:16px; color:var(--ink); margin-bottom:18px;}
   .voice p.who{font-size:14px; color:var(--berry);}
 
+  /* ===== ORDER SECTION ===== */
+  section.order{padding:88px 24px 0;}
+  section.order h2{font-size:clamp(28px,4vw,38px); max-width:22ch; margin-bottom:14px;}
+  section.order .sub{font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:36px;}
+  .order-card{display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:2px; padding:36px;}
+  .order-card img{width:100%; border-radius:2px; display:block;}
+  .order-card h3{font-size:26px; margin-bottom:10px;}
+  .order-card p.desc{font-size:15px; color:var(--ink-soft); margin-bottom:16px;}
+  .order-card ul{list-style:none; margin-bottom:20px;}
+  .order-card ul li{font-size:15px; color:var(--ink); padding-right:20px; position:relative; margin-bottom:8px;}
+  .order-card ul li::before{content:"—"; position:absolute; right:0; color:var(--gold);}
+  .price-row{display:flex; align-items:baseline; gap:14px; margin-bottom:18px; flex-wrap:wrap;}
+  .price-old{font-family:'Markazi Text', serif; font-size:22px; color:#c0392b; text-decoration:line-through; text-decoration-thickness:2px;}
+  .price-new{font-family:'Markazi Text', serif; font-size:32px; color:var(--berry);}
+  .price-tag{font-size:12px; background:#c0392b; color:var(--cream); padding:3px 10px; border-radius:2px; align-self:center;}
+  .order-note{font-size:13px; color:var(--ink-soft); margin-top:14px;}
+
+  /* ===== CROSS-SELL SECTION ===== */
+  section.crosssell{padding:64px 24px 0;}
+  section.crosssell h2{font-size:26px; margin-bottom:8px;}
+  section.crosssell .sub{font-size:15px; color:var(--ink-soft); margin-bottom:32px;}
+  .cs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .cs-card{background:var(--cream); border:1px solid var(--line); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
+  .cs-img{aspect-ratio:1/1; background:linear-gradient(150deg, var(--blush), var(--berry)); display:flex; align-items:center; justify-content:center;}
+  .cs-img img{width:70%; height:70%; object-fit:contain;}
+  .cs-body{padding:18px; display:flex; flex-direction:column; flex:1;}
+  .cs-body h4{font-family:'Tajawal',sans-serif; font-weight:700; font-size:16px; color:var(--ink); margin-bottom:6px;}
+  .cs-body p{font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; flex:1;}
+  .cs-price{font-family:'Markazi Text', serif; font-size:18px; color:var(--berry); margin-bottom:12px;}
+  .cs-body a{font-size:14px; color:var(--berry); text-decoration:none; border:1px solid var(--berry); padding:10px; text-align:center; border-radius:2px;}
+
   footer.final{background:var(--berry); color:var(--cream); padding:88px 24px 56px; text-align:center; margin-top:88px;}
   footer.final .mark{margin-bottom:24px;}
   footer.final h2{color:var(--cream); font-size:clamp(30px,5vw,44px); max-width:18ch; margin:0 auto 18px;}
@@ -137,6 +169,8 @@
     .voice-grid{grid-template-columns:1fr;}
     .step{grid-template-columns:44px 1fr;}
     .nav-social{display:none;}
+    .order-card{grid-template-columns:1fr;}
+    .cs-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -219,13 +253,13 @@
   <div class="compare-inner">
     <p class="kicker">قبل وبعد</p>
     <h2>فرق ملموس، مو بس وعد</h2>
-    <p class="sub">حركي المؤشر لتشوفي الفرق. استبدلي الألوان بصور حقيقية (قبل/بعد) لمتابعاتك بعد أخذ إذنهم.</p>
+    <p class="sub">حركي المؤشر لتشوفي الفرق.</p>
     <div class="compare-box" id="compareBox">
-      <div class="after-layer"><span class="layer-tag">بعد</span></div>
-      <div class="before-layer" id="beforeLayer" style="width:50%;"><span class="layer-tag">قبل</span></div>
+      <div class="after-layer"><img src="images/after.svg" alt="بعد"><span class="layer-tag">بعد</span></div>
+      <div class="before-layer" id="beforeLayer"><img src="images/before.svg" alt="قبل"><span class="layer-tag">قبل</span></div>
       <div class="compare-handle" id="compareHandle" style="left:50%;"></div>
     </div>
-    <p class="compare-caption">مساحة صور — استبدليها بصور حقيقية بإذن صاحبتها</p>
+    <p class="compare-caption">حركي المؤشر يمين ويسار</p>
   </div>
   <div class="cta-strip on-beige">
     <p>حابة تشاركينا قصتك وتصيري إنتي المثال الجاي؟</p>
@@ -279,67 +313,6 @@
     </div>
   </div>
 </section>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معاينة قسم الطلب</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#3a2a28;
-    --ink-soft:#7a5c55;
-    --cream:#faf5ee;
-    --berry:#6e2340;
-    --blush:#f0c7d2;
-    --beige:#e7dac5;
-    --gold:#c9a85e;
-    --line:rgba(58,42,40,0.14);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{background:var(--cream); color:var(--ink); font-family:'Tajawal', sans-serif; line-height:1.7;}
-  h1,h2,h3{font-family:'Markazi Text', serif; font-weight:700; color:var(--berry);}
-  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
-  .btn-primary{display:inline-block; background:var(--berry); color:var(--cream); text-decoration:none; font-size:16px; padding:15px 34px; border-radius:2px; text-align:center;}
-  .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
-
-  /* ===== ORDER SECTION ===== */
-  section.order{padding:88px 24px 0;}
-  section.order h2{font-size:clamp(28px,4vw,38px); max-width:22ch; margin-bottom:14px;}
-  section.order .sub{font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:36px;}
-  .order-card{display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:2px; padding:36px;}
-  .order-card img{width:100%; border-radius:2px; display:block;}
-  .order-card h3{font-size:26px; margin-bottom:10px;}
-  .order-card p.desc{font-size:15px; color:var(--ink-soft); margin-bottom:16px;}
-  .order-card ul{list-style:none; margin-bottom:20px;}
-  .order-card ul li{font-size:15px; color:var(--ink); padding-right:20px; position:relative; margin-bottom:8px;}
-  .order-card ul li::before{content:"—"; position:absolute; right:0; color:var(--gold);}
-  .price-row{display:flex; align-items:baseline; gap:14px; margin-bottom:18px; flex-wrap:wrap;}
-  .price-old{font-family:'Markazi Text', serif; font-size:22px; color:#c0392b; text-decoration:line-through; text-decoration-thickness:2px;}
-  .price-new{font-family:'Markazi Text', serif; font-size:32px; color:var(--berry);}
-  .price-tag{font-size:12px; background:#c0392b; color:var(--cream); padding:3px 10px; border-radius:2px; align-self:center;}
-  .order-note{font-size:13px; color:var(--ink-soft); margin-top:14px;}
-
-  /* ===== CROSS-SELL SECTION ===== */
-  section.crosssell{padding:64px 24px 0;}
-  section.crosssell h2{font-size:26px; margin-bottom:8px;}
-  section.crosssell .sub{font-size:15px; color:var(--ink-soft); margin-bottom:32px;}
-  .cs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  .cs-card{background:var(--cream); border:1px solid var(--line); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
-  .cs-img{aspect-ratio:1/1; background:linear-gradient(150deg, var(--blush), var(--berry)); display:flex; align-items:center; justify-content:center;}
-  .cs-img img{width:70%; height:70%; object-fit:contain;}
-  .cs-body{padding:18px; display:flex; flex-direction:column; flex:1;}
-  .cs-body h4{font-family:'Tajawal',sans-serif; font-weight:700; font-size:16px; color:var(--ink); margin-bottom:6px;}
-  .cs-body p{font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; flex:1;}
-  .cs-price{font-family:'Markazi Text', serif; font-size:18px; color:var(--berry); margin-bottom:12px;}
-  .cs-body a{font-size:14px; color:var(--berry); text-decoration:none; border:1px solid var(--berry); padding:10px; text-align:center; border-radius:2px;}
-  .placeholder-flag{font-size:11px; background:var(--gold); color:var(--cream); padding:2px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;}
-</style>
-</head>
-<body>
 
 <section class="order">
   <div class="wrap">
@@ -373,7 +346,7 @@
 <section class="crosssell">
   <div class="wrap">
     <h2>أكملي نظامك</h2>
-    <p class="sub">كثير من المتابعات بيضفن هالمنتجات لنتائج أقوى — استبدلي الروابط والأسعار بمنتجاتك الفعلية من متجرك.</p>
+    <p class="sub">كثير من المتابعات بيضفن هالمنتجات لنتائج أقوى.</p>
     <div class="cs-grid">
 
       <div class="cs-card">
@@ -410,8 +383,6 @@
   </div>
 </section>
 
-</body>
-</html>
 <footer class="final" id="cta">
   <div class="mark">
     <svg width="40" height="40" viewBox="0 0 56 56" style="margin:0 auto; display:block;"><circle cx="28" cy="28" r="27" fill="none" stroke="#f0c7d2" stroke-width="0.5"/><g fill="none" stroke="#f0c7d2" stroke-width="1.4" stroke-linecap="round"><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(72 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(144 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(216 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(288 28 28)"/></g><circle cx="28" cy="28" r="3" fill="#c9a85e"/></svg>
@@ -438,7 +409,7 @@
     var rect = box.getBoundingClientRect();
     var pct = ((clientX - rect.left) / rect.width) * 100;
     pct = Math.max(0, Math.min(100, pct));
-    before.style.width = pct + '%';
+    before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
     handle.style.left = pct + '%';
   }
 
