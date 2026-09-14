@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وازني إيقاعك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3a2a28;
+    --ink-soft:#7a5c55;
+    --cream:#faf5ee;
+    --berry:#6e2340;
+    --blush:#f0c7d2;
+    --beige:#e7dac5;
+    --gold:#c9a85e;
+    --line:rgba(58,42,40,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--ink); font-family:'Tajawal', sans-serif; line-height:1.7; overflow-x:hidden;}
+  h1,h2,h3{font-family:'Markazi Text', serif; font-weight:700; color:var(--berry);}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  /* NAV — logo mark + wordmark, per guideline min clear space */
+  nav{display:flex; align-items:center; justify-content:space-between; padding:24px 24px; max-width:920px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand svg{flex-shrink:0;}
+  .brand .word{font-family:'Markazi Text', serif; font-size:24px; font-weight:700; color:var(--berry);}
+  .nav-links{display:flex; align-items:center; gap:18px;}
+  .nav-social{display:flex; gap:12px;}
+  .nav-social a{color:var(--berry); text-decoration:none; font-size:14px; opacity:.75;}
+  nav a.cta-small{font-size:15px; color:var(--berry); text-decoration:none; border:1px solid var(--berry); padding:8px 18px; border-radius:2px;}
+
+  header.hero{padding:48px 24px 64px;}
+  .hero-inner{max-width:920px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  .hero h1{font-size:clamp(40px, 5.5vw, 58px); line-height:1.22; margin-bottom:22px;}
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:46ch; margin-bottom:28px;}
+  .hero-actions{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .hero-art{aspect-ratio:4/5; background:linear-gradient(160deg, var(--blush) 0%, var(--berry) 100%); border-radius:2px; position:relative; display:flex; align-items:flex-end; overflow:hidden;}
+  .hero-art span{position:relative; padding:24px; font-family:'Markazi Text', serif; font-size:22px; color:var(--cream);}
+
+  .btn-primary{display:inline-block; background:var(--berry); color:var(--cream); text-decoration:none; font-size:16px; padding:15px 34px; border-radius:2px; text-align:center;}
+  .btn-primary.on-blush{background:var(--blush); color:var(--berry);}
+  .link-ghost{font-size:15px; color:var(--berry); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px;}
+
+  .cta-strip{padding:44px 24px; text-align:center;}
+  .cta-strip.on-berry{background:var(--berry);}
+  .cta-strip.on-berry p{color:var(--blush); font-size:16px; margin-bottom:18px;}
+  .cta-strip.on-beige{background:var(--beige);}
+  .cta-strip.on-beige p{color:var(--ink-soft); font-size:16px; margin-bottom:18px;}
+  .cta-strip.on-cream p{color:var(--ink-soft); font-size:16px; margin-bottom:18px;}
+
+  section.signals{background:var(--berry); color:var(--cream); padding:72px 24px 0;}
+  section.signals h2{color:var(--cream); font-size:clamp(30px,4vw,40px); max-width:20ch; margin-bottom:44px;}
+  .signal-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:rgba(250,245,238,0.16); border:1px solid rgba(250,245,238,0.16);}
+  .signal{background:var(--berry); padding:28px 26px;}
+  .signal p{font-size:17px; color:var(--blush);}
+
+  section.video-section{padding:88px 24px 0;}
+  .video-inner{max-width:920px; margin:0 auto;}
+  section.video-section .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
+  section.video-section h2{font-size:clamp(28px,4vw,38px); max-width:22ch; margin-bottom:14px;}
+  section.video-section .sub{font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:44px;}
+  .video-feature{aspect-ratio:16/9; background:#3a1626; border-radius:2px; position:relative; overflow:hidden; margin-bottom:36px;}
+  .video-feature video{width:100%; height:100%; object-fit:cover; display:block;}
+  .video-feature .video-caption{position:absolute; bottom:0; right:0; left:0; padding:18px 22px; background:linear-gradient(to top, rgba(58,22,38,0.85), transparent); color:var(--cream); font-size:15px;}
+  .video-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-bottom:52px;}
+  .video-card{aspect-ratio:9/16; background:linear-gradient(150deg, var(--berry), #3a1626); border-radius:2px; position:relative; overflow:hidden;}
+  .video-card video{width:100%; height:100%; object-fit:cover; display:block;}
+  .video-card .play-badge{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+  .video-card .play-badge svg{width:44px; height:44px; opacity:.9;}
+  .video-card .video-label{position:absolute; bottom:0; right:0; left:0; padding:14px 16px; font-size:13px; color:var(--cream); background:linear-gradient(to top, rgba(58,22,38,0.9), transparent);}
+
+  section.compare{padding:88px 24px 0;}
+  .compare-inner{max-width:720px; margin:0 auto; text-align:center;}
+  section.compare .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
+  section.compare h2{font-size:clamp(28px,4vw,36px); margin-bottom:14px;}
+  section.compare .sub{font-size:16px; color:var(--ink-soft); margin-bottom:40px; max-width:52ch; margin-left:auto; margin-right:auto;}
+  .compare-box{position:relative; aspect-ratio:4/3; border-radius:2px; overflow:hidden; user-select:none; direction:ltr;}
+  .compare-box .after-layer{position:absolute; inset:0; background:linear-gradient(160deg, var(--blush), var(--berry)); display:flex; align-items:flex-end; padding:18px;}
+  .compare-box .before-layer{position:absolute; inset:0; background:var(--beige); display:flex; align-items:flex-end; padding:18px; overflow:hidden;}
+  .compare-box .layer-tag{color:var(--cream); font-size:13px; font-family:'Tajawal'; background:rgba(58,22,38,0.55); padding:4px 12px; border-radius:2px;}
+  .compare-box .before-layer .layer-tag{color:var(--ink); background:rgba(250,245,238,0.75);}
+  .compare-handle{position:absolute; top:0; bottom:0; width:2px; background:var(--cream); cursor:ew-resize;}
+  .compare-handle::after{content:""; position:absolute; top:50%; right:50%; transform:translate(50%,-50%); width:38px; height:38px; border-radius:50%; background:var(--cream); border:2px solid var(--berry);}
+  .compare-caption{margin-top:16px; font-size:13px; color:var(--ink-soft);}
+
+  section.story{padding:80px 24px 0; background:var(--beige); margin-top:88px;}
+  .story-inner{max-width:680px; margin:0 auto; text-align:center; padding-top:8px;}
+  .story-inner .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
+  .story-inner h2{font-size:clamp(28px,4vw,36px); margin-bottom:22px;}
+  .story-inner p{font-size:17px; color:var(--ink-soft); margin-bottom:16px;}
+
+  section.system{padding:88px 24px 0;}
+  .system-inner{max-width:920px; margin:0 auto;}
+  section.system h2{font-size:clamp(30px,4vw,40px); margin-bottom:12px;}
+  section.system .sub{font-size:16px; color:var(--ink-soft); margin-bottom:52px; max-width:52ch;}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:22px; padding:28px 0; border-top:1px solid var(--line);}
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step .num{font-family:'Markazi Text', serif; font-size:38px; color:var(--gold);}
+  .step h3{font-size:22px; margin-bottom:8px; font-family:'Tajawal',sans-serif; font-weight:700; color:var(--ink);}
+  .step p{font-size:16px; color:var(--ink-soft); max-width:56ch;}
+
+  section.quiz{background:var(--blush); padding:80px 24px; margin-top:88px;}
+  .quiz-inner{max-width:680px; margin:0 auto; text-align:center;}
+  section.quiz h2{font-size:clamp(26px,4vw,34px); margin-bottom:10px;}
+  section.quiz .sub{font-size:16px; color:#7a3d52; margin-bottom:36px;}
+  .quiz-options{display:grid; grid-template-columns:1fr 1fr; gap:14px; text-align:right;}
+  .quiz-options a{display:block; background:var(--cream); border:1px solid rgba(58,42,40,0.12); color:var(--ink); text-decoration:none; padding:18px 20px; font-size:16px; border-radius:2px;}
+  .quiz-options a .tag{display:block; font-size:13px; color:var(--berry); margin-bottom:6px;}
+
+  section.voices{padding:88px 24px 0;}
+  .voices-inner{max-width:920px; margin:0 auto;}
+  section.voices h2{font-size:clamp(28px,4vw,36px); margin-bottom:44px; max-width:20ch;}
+  .voice-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .voice{background:var(--cream); border:1px solid var(--line); padding:26px 22px;}
+  .voice p.quote{font-size:16px; color:var(--ink); margin-bottom:18px;}
+  .voice p.who{font-size:14px; color:var(--berry);}
+
+  footer.final{background:var(--berry); color:var(--cream); padding:88px 24px 56px; text-align:center; margin-top:88px;}
+  footer.final .mark{margin-bottom:24px;}
+  footer.final h2{color:var(--cream); font-size:clamp(30px,5vw,44px); max-width:18ch; margin:0 auto 18px;}
+  footer.final p{color:var(--blush); font-size:17px; margin-bottom:34px; max-width:44ch; margin-left:auto; margin-right:auto;}
+  .secondary-actions{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:26px;}
+  .secondary-actions a{display:inline-block; color:var(--cream); text-decoration:none; font-size:14px; padding:11px 20px; border:1px solid rgba(250,245,238,0.35); border-radius:2px;}
+  .foot-meta{margin-top:64px; padding-top:24px; border-top:1px solid rgba(250,245,238,0.16); font-size:13px; color:#d9a7bb;}
+
+  @media (max-width:720px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-art{order:-1; aspect-ratio:16/10;}
+    .signal-grid{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:repeat(3,1fr); gap:10px;}
+    .quiz-options{grid-template-columns:1fr;}
+    .voice-grid{grid-template-columns:1fr;}
+    .step{grid-template-columns:44px 1fr;}
+    .nav-social{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 56 56"><circle cx="28" cy="28" r="27" fill="#faf5ee" stroke="#6e2340" stroke-width="0.5"/><g fill="none" stroke="#6e2340" stroke-width="1.6" stroke-linecap="round"><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(72 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(144 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(216 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(288 28 28)"/></g><circle cx="28" cy="28" r="3" fill="#c9a85e"/></svg>
+    <span class="word">وازني إيقاعك</span>
+  </div>
+  <div class="nav-links">
+    <div class="nav-social">
+      <a href="#" target="_blank" rel="noopener">إنستغرام</a>
+      <a href="#" target="_blank" rel="noopener">تيك توك</a>
+    </div>
+    <a class="cta-small" href="#cta">تواصلي معي</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>جسمك بيتكلم … بس مين بيسمعه؟</h1>
+      <p class="lede">مش بوعدك بمعجزة بأسبوع، بس فيك تبدئي تفهمي جسمك من اليوم الأول. تعب ما بينحل بالنوم، وزن ثابت، وضباب بالتفكير — كلها إشارات لخلل بإيقاعك الأيضي.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%A8%D8%AF%D9%8A%20%D8%A7%D8%A8%D8%AF%D8%A3">ابدئي بجلسة تعارف قصيرة</a>
+        <a class="link-ghost" href="#video">شاهدي قصتي بالفيديو ↓</a>
+      </div>
+    </div>
+    <div class="hero-art"><span>مساحة صورة شخصية<br>أو لقطة من محتواكِ</span></div>
+  </div>
+</header>
+
+<section class="signals">
+  <div class="wrap">
+    <h2>وين بتلاقي حالك؟</h2>
+    <div class="signal-grid">
+      <div class="signal"><p>بتصحي تعبانة رغم إنك نمتي كفاية</p></div>
+      <div class="signal"><p>الوزن ثابت رغم الرجيمات اللي جربتيها</p></div>
+      <div class="signal"><p>نفسيتك بتتقلب من غير سبب واضح</p></div>
+      <div class="signal"><p>بتحسي إن جسمك مش زي قبل، وما بتعرفي وين البداية</p></div>
+    </div>
+  </div>
+  <div class="cta-strip on-berry">
+    <p>إذا لاقيتي حالك بأكتر من نقطة، خلينا نحكي</p>
+    <a class="btn-primary on-blush" href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D9%84%D8%A7%D9%82%D9%8A%D8%AA%20%D8%AD%D8%A7%D9%84%D9%8A">راسليني على واتساب</a>
+  </div>
+</section>
+
+<section class="video-section" id="video">
+  <div class="video-inner">
+    <p class="kicker">شوفي بنفسك</p>
+    <h2>قصص حقيقية من نفس الطريق</h2>
+    <p class="sub">فيديو قصير مني، وشوية لقطات من متابعات جربوا نفس الرحلة.</p>
+    <div class="video-feature">
+      <video controls poster="" preload="none"><source src="" type="video/mp4"></video>
+      <div class="video-caption">قصتي — ليش بديت بهالطريق، وشو تغيّر فعلياً</div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video preload="none"><source src="" type="video/mp4"></video>
+        <div class="play-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#faf5ee" stroke-width="1.3"/><path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#faf5ee"/></svg></div>
+        <div class="video-label">تجربة متابعة من الإمارات</div>
+      </div>
+      <div class="video-card">
+        <video preload="none"><source src="" type="video/mp4"></video>
+        <div class="play-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#faf5ee" stroke-width="1.3"/><path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#faf5ee"/></svg></div>
+        <div class="video-label">قبل وبعد ٦ أسابيع</div>
+      </div>
+      <div class="video-card">
+        <video preload="none"><source src="" type="video/mp4"></video>
+        <div class="play-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#faf5ee" stroke-width="1.3"/><path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#faf5ee"/></svg></div>
+        <div class="video-label">سؤال وجواب سريع</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="compare-inner">
+    <p class="kicker">قبل وبعد</p>
+    <h2>فرق ملموس، مو بس وعد</h2>
+    <p class="sub">حركي المؤشر لتشوفي الفرق. استبدلي الألوان بصور حقيقية (قبل/بعد) لمتابعاتك بعد أخذ إذنهم.</p>
+    <div class="compare-box" id="compareBox">
+      <div class="after-layer"><span class="layer-tag">بعد</span></div>
+      <div class="before-layer" id="beforeLayer" style="width:50%;"><span class="layer-tag">قبل</span></div>
+      <div class="compare-handle" id="compareHandle" style="left:50%;"></div>
+    </div>
+    <p class="compare-caption">مساحة صور — استبدليها بصور حقيقية بإذن صاحبتها</p>
+  </div>
+  <div class="cta-strip on-beige">
+    <p>حابة تشاركينا قصتك وتصيري إنتي المثال الجاي؟</p>
+    <a class="btn-primary" href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D9%82%D8%B5%D8%AA%D9%8A">راسليني على واتساب</a>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <p class="kicker">قصتي معاكِ</p>
+    <h2>ما بديت من مكان الخبيرة</h2>
+    <p>بديت من مكان التعب، لما جسمي كان بيبعتلي إشارات وأنا مش فاهمتها. غيّرت طريقة تفكيري بالتوازن الأيضي قبل ما أفكر بأي حل جاهز.</p>
+    <p>نظام بسيط بيساعدك تفهمي علاقة جسمك بالتوازن الأيضي، بخطوات واقعية ترجعلك إحساسك بجسمك تدريجياً.</p>
+  </div>
+</section>
+
+<section class="system">
+  <div class="system-inner">
+    <h2>كيف منشتغل مع بعض</h2>
+    <p class="sub">نظام بثلاث خطوات، مبني على فهم إيقاع جسمك مش على الحرمان.</p>
+    <div class="step"><div class="num">١</div><div><h3>جلسة تعارف وفهم الصورة الكاملة</h3><p>نحكي عن روتينك اليومي، نومك، أكلك، وأعراضك — نبني صورة واضحة قبل أي خطوة.</p></div></div>
+    <div class="step"><div class="num">٢</div><div><h3>خطة تناسب يومك الحقيقي</h3><p>إيقاع أكل وصيام متقطع بيتناسب مع جدولك، مو خطة جاهزة نفس الكل.</p></div></div>
+    <div class="step"><div class="num">٣</div><div><h3>متابعة أسبوعية ودعم مستمر</h3><p>ما بترجعي وحدك للتخبط — متابعة قريبة تساعدك تفهمي جسمك وتثبتي على المسار.</p></div></div>
+  </div>
+  <div class="cta-strip on-cream">
+    <p>جاهزة تبدئي أول خطوة؟</p>
+    <a class="btn-primary" href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%AC%D8%A7%D9%87%D8%B2%D8%A9%20%D8%A7%D8%A8%D8%AF%D8%A3">راسليني على واتساب</a>
+  </div>
+</section>
+
+<section class="quiz">
+  <div class="quiz-inner">
+    <h2>وين حاسة إنك عالقة أكتر؟</h2>
+    <p class="sub">اختاري اللي بيشبهك، وبنبعتلك رسالة جاهزة بس تضغطي.</p>
+    <div class="quiz-options">
+      <a href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%A7%D9%84%D8%AA%D8%B9%D8%A8%20%D9%88%D9%82%D9%84%D8%A9%20%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9"><span class="tag">تعب مستمر</span>بدي أفهم ليش طاقتي دايماً واطية</a>
+      <a href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%A7%D9%84%D9%88%D8%B2%D9%86%20%D8%A7%D9%84%D8%AB%D8%A7%D8%A8%D8%AA"><span class="tag">وزن ثابت</span>جربت كل شي والوزن مش بيتحرك</a>
+      <a href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%AA%D9%82%D9%84%D8%A8%20%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%AC"><span class="tag">تقلب مزاج</span>حاسة إن نفسيتي مرتبطة بجسمي بشكل غريب</a>
+      <a href="https://wa.me/?text=%D9%85%D9%87%D8%AA%D9%85%D8%A9%20-%20%D8%A8%D8%B3%D8%A3%D9%84%20%D9%82%D8%A8%D9%84%20%D9%85%D8%A7%20%D8%A7%D8%A8%D8%AF%D8%A3"><span class="tag">لسا مش متأكدة</span>بدي أسأل قبل ما أبدأ أي شي</a>
+    </div>
+  </div>
+</section>
+
+<section class="voices">
+  <div class="voices-inner">
+    <h2>وحدات مشيوا هالطريق</h2>
+    <div class="voice-grid">
+      <div class="voice"><p class="quote">حسيت إني رجعت افهم جسمي، مش بس بحاول أخس.</p><p class="who">— متابعة من الإمارات</p></div>
+      <div class="voice"><p class="quote">أول مرة حد يشرحلي شو معنى التوازن الأيضي بطريقة مفهومة.</p><p class="who">— متابعة من السويد</p></div>
+      <div class="voice"><p class="quote">صرت أعرف أفرق بين تعب عابر وتعب لازم انتبهله.</p><p class="who">— متابعة من السعودية</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="final" id="cta">
+  <div class="mark">
+    <svg width="40" height="40" viewBox="0 0 56 56" style="margin:0 auto; display:block;"><circle cx="28" cy="28" r="27" fill="none" stroke="#f0c7d2" stroke-width="0.5"/><g fill="none" stroke="#f0c7d2" stroke-width="1.4" stroke-linecap="round"><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(72 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(144 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(216 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(288 28 28)"/></g><circle cx="28" cy="28" r="3" fill="#c9a85e"/></svg>
+  </div>
+  <h2>خطوتك الأولى بترجعلك إحساسك بجسمك</h2>
+  <p>ابعتيلي رسالة وخبريني وين حاسة إنك عالقة — منحدد سوا أول خطوة تناسبك.</p>
+  <a class="btn-primary on-blush" href="https://wa.me/">راسليني على واتساب</a>
+  <div class="secondary-actions">
+    <a href="#" target="_blank" rel="noopener">تابعيني على إنستغرام</a>
+    <a href="#" target="_blank" rel="noopener">تابعيني على تيك توك</a>
+    <a href="#" target="_blank" rel="noopener">حمّلي الدليل المجاني</a>
+  </div>
+  <div class="foot-meta">وازني إيقاعك — محتوى توعوي، مش بديل عن استشارة طبية</div>
+</footer>
+
+<script>
+(function(){
+  var box = document.getElementById('compareBox');
+  var before = document.getElementById('beforeLayer');
+  var handle = document.getElementById('compareHandle');
+  var dragging = false;
+
+  function setPos(clientX){
+    var rect = box.getBoundingClientRect();
+    var pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    before.style.width = pct + '%';
+    handle.style.left = pct + '%';
+  }
+
+  handle.addEventListener('mousedown', function(){ dragging = true; });
+  window.addEventListener('mouseup', function(){ dragging = false; });
+  window.addEventListener('mousemove', function(e){ if(dragging) setPos(e.clientX); });
+
+  handle.addEventListener('touchstart', function(){ dragging = true; }, {passive:true});
+  window.addEventListener('touchend', function(){ dragging = false; });
+  window.addEventListener('touchmove', function(e){
+    if(dragging && e.touches[0]) setPos(e.touches[0].clientX);
+  }, {passive:true});
+
+  box.addEventListener('click', function(e){ setPos(e.clientX); });
+})();
+</script>
+
+</body>
+</html>
