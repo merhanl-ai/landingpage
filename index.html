@@ -279,7 +279,139 @@
     </div>
   </div>
 </section>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معاينة قسم الطلب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3a2a28;
+    --ink-soft:#7a5c55;
+    --cream:#faf5ee;
+    --berry:#6e2340;
+    --blush:#f0c7d2;
+    --beige:#e7dac5;
+    --gold:#c9a85e;
+    --line:rgba(58,42,40,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--cream); color:var(--ink); font-family:'Tajawal', sans-serif; line-height:1.7;}
+  h1,h2,h3{font-family:'Markazi Text', serif; font-weight:700; color:var(--berry);}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  .btn-primary{display:inline-block; background:var(--berry); color:var(--cream); text-decoration:none; font-size:16px; padding:15px 34px; border-radius:2px; text-align:center;}
+  .kicker{font-size:14px; color:var(--berry); margin-bottom:14px; letter-spacing:.5px;}
 
+  /* ===== ORDER SECTION ===== */
+  section.order{padding:88px 24px 0;}
+  section.order h2{font-size:clamp(28px,4vw,38px); max-width:22ch; margin-bottom:14px;}
+  section.order .sub{font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:36px;}
+  .order-card{display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:2px; padding:36px;}
+  .order-card img{width:100%; border-radius:2px; display:block;}
+  .order-card h3{font-size:26px; margin-bottom:10px;}
+  .order-card p.desc{font-size:15px; color:var(--ink-soft); margin-bottom:16px;}
+  .order-card ul{list-style:none; margin-bottom:20px;}
+  .order-card ul li{font-size:15px; color:var(--ink); padding-right:20px; position:relative; margin-bottom:8px;}
+  .order-card ul li::before{content:"—"; position:absolute; right:0; color:var(--gold);}
+  .price-row{display:flex; align-items:baseline; gap:14px; margin-bottom:18px; flex-wrap:wrap;}
+  .price-old{font-family:'Markazi Text', serif; font-size:22px; color:#c0392b; text-decoration:line-through; text-decoration-thickness:2px;}
+  .price-new{font-family:'Markazi Text', serif; font-size:32px; color:var(--berry);}
+  .price-tag{font-size:12px; background:#c0392b; color:var(--cream); padding:3px 10px; border-radius:2px; align-self:center;}
+  .order-note{font-size:13px; color:var(--ink-soft); margin-top:14px;}
+
+  /* ===== CROSS-SELL SECTION ===== */
+  section.crosssell{padding:64px 24px 0;}
+  section.crosssell h2{font-size:26px; margin-bottom:8px;}
+  section.crosssell .sub{font-size:15px; color:var(--ink-soft); margin-bottom:32px;}
+  .cs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .cs-card{background:var(--cream); border:1px solid var(--line); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
+  .cs-img{aspect-ratio:1/1; background:linear-gradient(150deg, var(--blush), var(--berry)); display:flex; align-items:center; justify-content:center;}
+  .cs-img img{width:70%; height:70%; object-fit:contain;}
+  .cs-body{padding:18px; display:flex; flex-direction:column; flex:1;}
+  .cs-body h4{font-family:'Tajawal',sans-serif; font-weight:700; font-size:16px; color:var(--ink); margin-bottom:6px;}
+  .cs-body p{font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; flex:1;}
+  .cs-price{font-family:'Markazi Text', serif; font-size:18px; color:var(--berry); margin-bottom:12px;}
+  .cs-body a{font-size:14px; color:var(--berry); text-decoration:none; border:1px solid var(--berry); padding:10px; text-align:center; border-radius:2px;}
+  .placeholder-flag{font-size:11px; background:var(--gold); color:var(--cream); padding:2px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<section class="order">
+  <div class="wrap">
+    <p class="kicker">اطلبي نظامك</p>
+    <h2>Feel Great — نظام التوازن الأيضي الكامل</h2>
+    <p class="sub">حزمة تجمع Balance و Unimate سوا، مصممة تساعدك تمدّي فترة الصيام المتقطع بارتياح وتوازن مستوى السكر بجسمك.</p>
+
+    <div class="order-card">
+      <img src="https://cosmic-assets.unicity.com/shop2/EUROZONE/configurable_product_images/b07efcd8fb9e4bba8e106e1556dc081b/34082.webp" alt="Feel Great System">
+      <div>
+        <h3>Feel Great (٢× Balance + Unimate)</h3>
+        <p class="desc">علبة شهرية كاملة — بونص: زجاجة مزج مجانية مع أول طلب.</p>
+        <ul>
+          <li>تدعم الشعور بالشبع وتساعد على تمديد فترة الصيام</li>
+          <li>تحافظ على مستوى سكر صحي بالدم</li>
+          <li>تعزز التركيز والطاقة الذهنية مع Unimate</li>
+        </ul>
+        <div class="price-row">
+          <span class="price-old">٢٣٤.٣٠ يورو</span>
+          <span class="price-new">٢١٠.٠٠ يورو</span>
+          <span class="price-tag">خصم كود مرهان</span>
+        </div>
+        <p style="font-size:13px; color:var(--ink-soft); margin-top:-10px; margin-bottom:16px;">السعر بعد الخصم شهرياً بالاشتراك — [عدّلي الرقم حسب نسبة الخصم الفعلية لكودك]</p>
+        <a class="btn-primary" href="https://shop.unicity.com/nld/en/product/feel-great?sku=34082&ref=YOUR_REF_CODE" target="_blank" rel="noopener">اطلبيه الآن</a>
+        <p class="order-note">ضمان استرجاع ٩٠ يوم · شحن مجاني مع الاشتراك الشهري</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="crosssell">
+  <div class="wrap">
+    <h2>أكملي نظامك</h2>
+    <p class="sub">كثير من المتابعات بيضفن هالمنتجات لنتائج أقوى — استبدلي الروابط والأسعار بمنتجاتك الفعلية من متجرك.</p>
+    <div class="cs-grid">
+
+      <div class="cs-card">
+        <div class="cs-img"><img src="https://cosmic-assets.unicity.com/shop2/EUROZONE/configurable_product_images/a7051ef697b945598d85dee2541b5df1/Lemon_Lifestyle.png" alt="Unimate إضافي"></div>
+        <div class="cs-body">
+          <h4>Unimate إضافي</h4>
+          <p>جرعة طاقة وتركيز إضافية لمنتصف اليوم أو قبل التمرين.</p>
+          <div class="cs-price">١١٩.٠٨ يورو</div>
+          <a href="https://shop.unicity.com/nld/en/product/unimate?sku=36498&ref=YOUR_REF_CODE" target="_blank" rel="noopener">أضيفيه لطلبك</a>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-img"><img src="https://cosmic-assets.unicity.com/EUROZONE/configurable_product_images/f9e0ca0f7e864077a91f0af0f9bd6d9c/assets2F36bafd79896149ec87b35e8e4e4ffdac.webp" alt="ProBionic Plus"></div>
+        <div class="cs-body">
+          <h4>ProBionic Plus</h4>
+          <p>١١ نوع من البروبيوتيك تدعم توازن الأمعاء وصحة الجهاز الهضمي — تكمّل نظام Feel Great.</p>
+          <div class="cs-price">٤٨.٨٠ يورو</div>
+          <a href="https://shop.unicity.com/nld/en/product/probionic-plus?ref=YOUR_REF_CODE" target="_blank" rel="noopener">أضيفيه لطلبك</a>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-img"><img src="https://cosmic-assets.unicity.com/shop2/EUROZONE/configurable_product_images/60babc16e04942c180b32d1437d6d605/Balance_Shop_image_1.png" alt="Balance"></div>
+        <div class="cs-body">
+          <h4>Balance إضافي</h4>
+          <p>علبة Balance منفردة لمن حابة تزود كمية الألياف اليومية أو تشارك النظام مع صديقتها.</p>
+          <div class="cs-price">٦٦.١١ يورو</div>
+          <a href="https://shop.unicity.com/nld/en/product/balance?sku=36027&ref=YOUR_REF_CODE" target="_blank" rel="noopener">أضيفيه لطلبك</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
 <footer class="final" id="cta">
   <div class="mark">
     <svg width="40" height="40" viewBox="0 0 56 56" style="margin:0 auto; display:block;"><circle cx="28" cy="28" r="27" fill="none" stroke="#f0c7d2" stroke-width="0.5"/><g fill="none" stroke="#f0c7d2" stroke-width="1.4" stroke-linecap="round"><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(72 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(144 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(216 28 28)"/><path d="M28 16 C 32 20, 32 26, 28 30 C 24 26, 24 20, 28 16 Z" transform="rotate(288 28 28)"/></g><circle cx="28" cy="28" r="3" fill="#c9a85e"/></svg>
